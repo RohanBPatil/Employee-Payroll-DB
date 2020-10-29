@@ -21,3 +21,6 @@ values
 ('Shahrukh', 100000, '2018-01-03'),
 ('Anil', 300000, '2019-11-13'),
 ('Makrand', 500000, '2020-05-21');
+
+#UC 4
+select * from employee_payroll;		# to retrieve all data
