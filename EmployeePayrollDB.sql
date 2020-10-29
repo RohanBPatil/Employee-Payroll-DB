@@ -23,4 +23,9 @@ values
 ('Makrand', 500000, '2020-05-21');
 
 #UC 4
-select * from employee_payroll;		# to retrieve all data
+select * from employee_payroll;		# to retrieve all data from table
+
+#UC 5
+select salary from employee_payroll where name = 'Anil';
+select * from employee_payroll
+where start between cast('2020-01-01' as date) and date(now());
