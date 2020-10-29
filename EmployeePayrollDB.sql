@@ -20,7 +20,7 @@ insert into employee_payroll (name, salary, start)
 values
 ('Shahrukh', 100000, '2018-01-03'),
 ('Anil', 300000, '2019-11-13'),
-('Makrand', 500000, '2020-05-21');
+('Mansi', 500000, '2020-05-21');
 
 #UC 4
 select * from employee_payroll;		# to retrieve all data from table
@@ -29,3 +29,16 @@ select * from employee_payroll;		# to retrieve all data from table
 select salary from employee_payroll where name = 'Anil';
 select * from employee_payroll
 where start between cast('2020-01-01' as date) and date(now());
+
+#UC 6
+alter table employee_payroll		# to operate on columns
+add gender char(1)			# to add gender column
+after name;
+describe employee_payroll;
+update employee_payroll
+set gender = 'M'
+where name = 'Shahrukh' or name = 'Anil';
+update employee_payroll
+set gender = 'F'
+where name = 'Mansi';
+select *  from employee_payroll;
