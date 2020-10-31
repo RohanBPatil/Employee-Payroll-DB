@@ -62,3 +62,8 @@ add deductions double not null after basic_pay,
 add taxable_pay double not null after deductions, 
 add tax double not null after taxable_pay, 
 add net_pay double not null after tax;
+
+#UC 10
+update employee_payroll set department = 'Sales' where name = 'Mansi';
+insert into employee_payroll (name,phone, department, gender, basic_pay, deductions, taxable_pay, tax, net_pay, start) values
+('Mansi', 9865326598, 'Marketing', 'f', 400000, 50000, 200000, 10000, 200000, '2020-05-21');
