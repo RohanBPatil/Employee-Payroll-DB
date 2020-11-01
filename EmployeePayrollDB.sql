@@ -67,3 +67,32 @@ add net_pay double not null after tax;
 update employee_payroll set department = 'Sales' where name = 'Mansi';
 insert into employee_payroll (name,phone, department, gender, basic_pay, deductions, taxable_pay, tax, net_pay, start) values
 ('Mansi', 9865326598, 'Marketing', 'f', 400000, 50000, 200000, 10000, 200000, '2020-05-21');
+
+#UC 11
+alter table employee_payroll
+rename to employee;
+create table employee_dept (
+employeeId int not null,
+departmentName varchar(100) not null,
+foreign key (employeeId) references employee(employeeId)
+);
+create table payroll (
+employeeId int not null,
+basic_pay double not null,
+deductions double not null,
+taxable_pay double not null,
+tax double not null,
+net_pay double not null,
+foreign key (employeeId) references employee(employeeId)
+);
+create table phone_numbers (
+employeeId int not null,
+phone numeric(10) not null,
+foreign key (employeeId) references employee(employeeId)
+);
+alter table employee
+drop column basic_pay,
+drop column deductions,
+drop column taxable_pay,
+drop column tax,
+drop column net_pay;
