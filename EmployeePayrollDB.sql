@@ -71,6 +71,7 @@ insert into employee_payroll (name,phone, department, gender, basic_pay, deducti
 #UC 11
 alter table employee_payroll
 rename to employee;
+alter table employee rename column id to employeeId;
 create table employee_dept (
 employeeId int not null,
 departmentName varchar(100) not null,
@@ -96,3 +97,11 @@ drop column deductions,
 drop column taxable_pay,
 drop column tax,
 drop column net_pay;
+
+#UC 12
+select employee.employeeId, employee.name, phone_numbers.phone, employee.address, employee_dept.departmentName, employee.gender,
+payroll.basic_pay, payroll.deductions, payroll.taxable_pay, payroll.tax, payroll.net_pay, employee.start
+from employee 
+inner join phone_numbers on employee.employeeId = phone_numbers.employeeId 
+inner join employee_dept on employee.employeeId = employee_dept.employeeId
+inner join payroll on employee.employeeId = payroll.employeeId;
